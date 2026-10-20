@@ -14,10 +14,6 @@ namespace SinCity2._0
             Width = width;
             Height = height;
         }
-
-        public static void DrawBoard(int width, int height, Person person)
-
-
         {
             for (int i = 0; i < height; i++)
             {
