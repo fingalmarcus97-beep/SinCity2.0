@@ -12,7 +12,7 @@ namespace SinCity2._0
         public int DirectionX { get; set; }
         public int DirectionY { get; set; }
         public List<string> Inventory { get; set; }
-        public string Appearance { get; set; }  
+        public string Appearance { get; set; }
 
         public Person(int positionX, int positionY, string appearance)
         {
@@ -21,14 +21,37 @@ namespace SinCity2._0
             Appearance = appearance;
         }
 
+        
 
-    }
-    class Citizen: Person 
-    {
-        public Citizen(int positionX, int positionY, string appearance) :base (positionX,positionY,appearance)
+        public static void Reg(List<Person> register)
         {
-            Appearance = "C";
-        }
-    }
+            for (int i = 0; i < 20; i++)
+            {
+                register.Add(new Citizen(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), "C"));
+            }
 
+        }
+        class Citizen : Person
+        {
+            public Citizen(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
+            {
+                Appearance = "C";
+            }
+        }
+        class Thief : Person
+        {
+            public Thief(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
+            {
+                Appearance = "T";
+            }
+        }
+        class Police : Person
+        {
+            public Police(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
+            {
+                Appearance = "P";
+            }
+        }
+
+    }
 }

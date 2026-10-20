@@ -14,7 +14,7 @@ namespace SinCity2._0
             Width = width;
             Height = height;
         }
-        public static void DrawBoard(int  width, int height, Person person)
+        public static void DrawBoard(int  width, int height, Person person, List<Person> register)
         {
 
             for (int i = 0; i < height; i++)
@@ -33,8 +33,7 @@ namespace SinCity2._0
 
                     else if (i == person.PositionY && j == person.PositionX)
                     {
-                        Console.Write(person.Appearance);
-
+                        Console.Write("x");
                     }
                     else
                     {
