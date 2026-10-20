@@ -33,7 +33,11 @@ namespace SinCity2._0
 
                     else if (i == person.PositionY && j == person.PositionX)
                     {
-                        Console.Write("x");
+                        foreach (var people in register)
+                        {
+                            Console.Write(person.Appearance);
+                        }
+                        
                     }
                     else
                     {

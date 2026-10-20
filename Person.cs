@@ -16,8 +16,8 @@ namespace SinCity2._0
 
         public Person(int positionX, int positionY, string appearance)
         {
-            PositionX = Random.Shared.Next(1, 99);
-            PositionY = Random.Shared.Next(1, 24);
+            PositionX = positionX;
+            PositionY = positionY;
             Appearance = appearance;
         }
 
