@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Test test = new Test(5,10);
+            Board.DrawBoard(100,25,test);
         }
     }
 }
