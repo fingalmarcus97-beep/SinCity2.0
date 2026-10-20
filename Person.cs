@@ -27,7 +27,7 @@ namespace SinCity2._0
     {
         public Citizen(int positionX, int positionY, string appearance) :base (positionX,positionY,appearance)
         {
-            appearance = "C";
+            Appearance = "C";
         }
     }
 

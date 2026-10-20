@@ -24,21 +24,21 @@ namespace SinCity2._0
                     if (i == 0 && j == 2)
                     {
                         Console.Write(" SINCITY ");
-                        j += 9;
+                        j += 8;
                     }
-                    if (i == height - 1 || i == 0 || j == width - 1 || j == 0)
+                    else if (i == height - 1 || i == 0 || j == width - 1 || j == 0)
                     {
                         Console.Write("█");
                     }
 
-                    if (i == person.PositionY && j == person.PositionX)
+                    else if (i == person.PositionY && j == person.PositionX)
                     {
                         Console.Write(person.Appearance);
 
                     }
                     else
                     {
-                        Console.Write("x");
+                        Console.Write(" ");
                     }
                 }
                 Console.WriteLine();
