@@ -31,17 +31,14 @@ namespace SinCity2._0
                         Console.Write("█");
                     }
 
-                    if(i == person.PositionY && j == person.PositionX)
+                    if (i == person.PositionY && j == person.PositionX)
                     {
-                        Console.SetCursorPosition(i, j);
-                        
+                        Console.Write(person.Appearance);
+
                     }
-
-
-
                     else
                     {
-                        Console.Write(" ");
+                        Console.Write("x");
                     }
                 }
                 Console.WriteLine();

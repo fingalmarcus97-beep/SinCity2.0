@@ -4,11 +4,8 @@
     {
         static void Main(string[] args)
         {
-
-
-            Test test = new Test(5,10);
-            Board.DrawBoard(100,25,test);
-
+            Person character = new Person(Random.Shared.Next(1,99), Random.Shared.Next(1,24), "C");
+            Board.DrawBoard(100,25,character);
         }
     }
 }

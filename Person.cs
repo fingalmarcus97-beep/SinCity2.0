@@ -12,23 +12,23 @@ namespace SinCity2._0
         public int DirectionX { get; set; }
         public int DirectionY { get; set; }
         public List<string> Inventory { get; set; }
+        public string Appearance { get; set; }  
 
-        public Person(int positionX, int positionY)
+        public Person(int positionX, int positionY, string appearance)
         {
-            PositionX = positionX;
-            PositionY = positionY;
-
+            PositionX = Random.Shared.Next(1, 99);
+            PositionY = Random.Shared.Next(1, 24);
+            Appearance = appearance;
         }
 
+
     }
-    class Test: Person 
+    class Citizen: Person 
     {
-        public Test(int positionX, int positionY) :base (positionX,positionY)
+        public Citizen(int positionX, int positionY, string appearance) :base (positionX,positionY,appearance)
         {
-            positionX = 5;
-            positionY = 10;
-
+            appearance = "C";
         }
-
     }
+
 }
