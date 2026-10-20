@@ -31,14 +31,13 @@ namespace SinCity2._0
                         Console.Write("█");
                     }
 
-                    else if (i == person.PositionY && j == person.PositionX)
-                    {
-                        foreach (var people in register)
-                        {
-                            Console.Write(person.Appearance);
-                        }
-                        
-                    }
+                    //else if (register.Any)
+                    //{
+                    //    foreach (var people in register)
+                    //    {
+                    //        Console.Write(person.Appearance);
+                    //    }  
+                    //}
                     else
                     {
                         Console.Write(" ");
