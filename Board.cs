@@ -14,7 +14,10 @@ namespace SinCity2._0
             Width = width;
             Height = height;
         }
+
         public static void DrawBoard(int width, int height, Person person)
+
+
         {
             for (int i = 0; i < height; i++)
             {
@@ -29,11 +32,15 @@ namespace SinCity2._0
                     {
                         Console.Write("█");
                     }
+
                     if(i == person.PositionY && j == person.PositionX)
                     {
                         Console.SetCursorPosition(i, j);
                         
                     }
+
+
+
                     else
                     {
                         Console.Write(" ");
