@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace SinCity2._0
 {
@@ -16,45 +17,85 @@ namespace SinCity2._0
         }
         public static void Reg(List<Person> register)
         {
-            for (int i = 0; i < 2; i++)
+            string[] namnLista =
             {
-                register.Add(new Citizen(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), "C"));
+                "Andersson","Johansson","Karlsson","Nilsson","Eriksson",
+                "Larsson","Olsson","Persson","Svensson","Gustafsson","Lindberg",
+                "Lundgren","Bergström","Holm","Sandberg","Björk",
+                "Dahl","Berg","Nyström","Håkansson","Ström",
+                "Lindqvist","Mattsson","Fredriksson","Wallin",
+                "Ekström","Axelsson","Berglund","Samuelsson",
+                "Löfgren","Hellström","Blomqvist","Norberg",
+                "Åkesson","Sahlberg","Edlund","Boström","Isaksson","Marklund",
+                "Sjöberg"
+            };
+            Random rnd = new Random();
+            
+            for (int i = 0; i < 20; i++)
+            {
+                string name = namnLista[rnd.Next(namnLista.Length)];
+                register.Add(new Citizen(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 10; i++)
             {
-                register.Add(new Thief(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), "T"));
+                string name = namnLista[rnd.Next(namnLista.Length)];
+                register.Add(new Thief(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 5; i++)
             {
-                register.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), "P"));
+                string name = namnLista[rnd.Next(namnLista.Length)];
+                register.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
 
         }
+        //public static void Movement()
+        //{
+        //    Random random = new Random();
+
+
+        //}
+
+
         public static void DrawBoard(int width, int height, List<Person> register)
         {
             while (true)
             {
                 Console.SetCursorPosition(0, 0);
                 Console.CursorVisible = false;
-                for (int i = 0; i < height; i++)
+                for (int y = 0; y < height; y++)
                 {
-                    for (int j = 0; j < width; j++)
+                    for (int x = 0; x < width; x++)
                     {
-                        if (i == 0 && j == 2)
+                        var peoples = register.Where(people => people.PositionX == x && people.PositionY == y).ToList();
+
+                        if (y == 0 && x == 2)
                         {
                             Console.Write(" SINCITY ");
-                            j += 8;
+                            x += 8;
                         }
-                        else if (i == height - 1 || i == 0 || j == width - 1 || j == 0)
+                        else if (y == height - 1 || y == 0 || x == width - 1 || x == 0)
                         {
                             Console.Write("█");
                         }
-
-                        else if (register.Any(people => people.PositionX == j && people.PositionY == i))
+                        else if (peoples.Any())
                         {
-                            foreach(Person person in register)
+                            foreach (Person p in peoples)
                             {
-                                Console.Write(person.Appearance);
+                                if (p is Citizen)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                }
+                                else if (p is Thief)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                }
+                                else if (p is Police)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Blue;
+                                }
+
+                                Console.Write(p.Appearance);
+                                Console.ResetColor();
                             }
                         }
                         else
@@ -64,12 +105,6 @@ namespace SinCity2._0
                     }
                     Console.WriteLine();
                 }
-
-
-
-
-
-
             }
         }
     }

@@ -14,37 +14,31 @@ namespace SinCity2._0
         public List<string> Inventory { get; set; }
         public string Appearance { get; set; }
 
-        public Person(int positionX, int positionY, string appearance)
+        public Person(int positionX, int positionY, string name)
         {
             PositionX = positionX;
             PositionY = positionY;
-            Appearance = appearance;
+            Name = name;
         }
-
-
-
-        
-        
-
     }
 
     internal class Citizen : Person
     {
-        public Citizen(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
+        public Citizen(int positionX, int positionY, string name) : base(positionX, positionY, name )
         {
             Appearance = "C";
         }
     }
     internal class Thief : Person
     {
-        public Thief(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
+        public Thief(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
             Appearance = "T";
         }
     }
     internal class Police : Person
     {
-        public Police(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
+        public Police(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
             Appearance = "P";
         }
