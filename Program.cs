@@ -4,10 +4,12 @@
     {
         static void Main(string[] args)
         {
+            
             List<Person> register = new List<Person>();
-            Person.Reg(register);
-            Person character = new Person(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), "C");
-            Board.DrawBoard(100, 25, character, register);
+            //Person character = new Person(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), "?");
+            Board.Reg(register);
+            
+            Board.DrawBoard(100, 25, register);
 
         }
     }

@@ -21,37 +21,32 @@ namespace SinCity2._0
             Appearance = appearance;
         }
 
+
+
+        
         
 
-        public static void Reg(List<Person> register)
-        {
-            for (int i = 0; i < 20; i++)
-            {
-                register.Add(new Citizen(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), "C"));
-            }
+    }
 
-        }
-        class Citizen : Person
+    internal class Citizen : Person
+    {
+        public Citizen(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
         {
-            public Citizen(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
-            {
-                Appearance = "C";
-            }
+            Appearance = "C";
         }
-        class Thief : Person
+    }
+    internal class Thief : Person
+    {
+        public Thief(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
         {
-            public Thief(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
-            {
-                Appearance = "T";
-            }
+            Appearance = "T";
         }
-        class Police : Person
+    }
+    internal class Police : Person
+    {
+        public Police(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
         {
-            public Police(int positionX, int positionY, string appearance) : base(positionX, positionY, appearance)
-            {
-                Appearance = "P";
-            }
+            Appearance = "P";
         }
-
     }
 }
