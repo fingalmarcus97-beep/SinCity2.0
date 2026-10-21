@@ -60,6 +60,7 @@ namespace SinCity2._0
         {
             while (true)
             {
+                Random rnd = new Random();
                 Console.SetCursorPosition(0, 0);
                 Console.CursorVisible = false;
                 for (int y = 0; y < height; y++)
@@ -105,6 +106,32 @@ namespace SinCity2._0
                     }
                     Console.WriteLine();
                 }
+                foreach (Person move in register)
+                {
+                    move.PositionX += move.DirectionX;
+                    move.PositionY += move.DirectionY;
+
+                    if (move.PositionX > 100)
+                    {
+                        move.PositionX = 1;
+                    }
+                    if (move.PositionY > 25)
+                    {
+                        move.PositionY = 1;
+                    }
+                    if (move.PositionX < 0)
+                    {
+                        move.PositionX = 99;
+                    }
+                    if (move.PositionY < 0)
+                    {
+                        move.PositionY = 24;
+                    }
+                }
+                {
+                    
+                }
+                Thread.Sleep(10);
             }
         }
     }

@@ -19,6 +19,8 @@ namespace SinCity2._0
             PositionX = positionX;
             PositionY = positionY;
             Name = name;
+            DirectionX = Random.Shared.Next(-1, 2);
+            DirectionY = Random.Shared.Next(-1, 2);
         }
     }
 

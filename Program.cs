@@ -7,6 +7,7 @@
 
             List<Person> register = new List<Person>();
             Board.Reg(register);
+            
             Board.DrawBoard(100, 25, register);
         }
     }
