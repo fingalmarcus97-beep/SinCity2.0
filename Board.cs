@@ -48,121 +48,159 @@ namespace SinCity2._0
             }
 
         }
-        
 
-        
+
+
+
         public static void DrawBoard(int width, int height, List<Person> register)
         {
-            //while (true)
-            //{
-           
-                Console.SetCursorPosition(0, 0);
-                Console.CursorVisible = false;
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        var peoples = register.Where(people => people.PositionX == x && people.PositionY == y).ToList();
+            
 
-                        if (y == 0 && x == 2)
+            Console.SetCursorPosition(0, 0);
+            Console.CursorVisible = false;
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    var peoples = register.Where(people => people.PositionX == x && people.PositionY == y).ToList();
+
+                    if (y == 0 && x == 2)
+                    {
+                        Console.Write(" SINCITY ");
+                        x += 8;
+                    }
+                    else if (y == height - 1 || y == 0 || x == width - 1 || x == 0)
+                    {
+                        Console.Write("█");
+                    }
+                    else if (peoples.Any())
+                    {
+                        foreach (Person p in peoples)
                         {
-                            Console.Write(" SINCITY ");
-                            x += 8;
-                        }
-                        else if (y == height - 1 || y == 0 || x == width - 1 || x == 0)
-                        {
-                            Console.Write("█");
-                        }
-                        else if (peoples.Any())
-                        {
-                            foreach (Person p in peoples)
+
+
+
+                            if (p is Citizen)
                             {
+                                Console.ForegroundColor = ConsoleColor.Green;
 
-                                if (p is Citizen)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                }
-                                else if (p is Thief)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                }
-                                else if (p is Police)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Blue;
-                                }
-
-                                Console.Write(p.Appearance);
-                                Console.ResetColor();
                             }
-                        }
-                        else
-                        {
-                            Console.Write(" ");
+                            else if (p is Thief)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+
+                            }
+                            else if (p is Police)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Blue;
+
+                            }
+
+                            Console.Write(p.Appearance);
+                            Console.ResetColor();
                         }
                     }
-                    Console.WriteLine();
+                    else
+                    {
+                        Console.Write(" ");
+                    }
                 }
-                foreach (Person move in register)
+                Console.WriteLine();
+            }
+            foreach (Person move in register)
+            {
+                move.PositionX += move.DirectionX;
+                move.PositionY += move.DirectionY;
+
+                if (move.PositionX >= width - 1)
                 {
-                    move.PositionX += move.DirectionX;
-                    move.PositionY += move.DirectionY;
-
-                    if (move.PositionX >= width - 1)
-                    {
-                        move.PositionX = 1;
-                    }
-                    if (move.PositionY >= height - 1)
-                    {
-                        move.PositionY = 1;
-                    }
-                    if (move.PositionX <= 0)
-                    {
-                        move.PositionX = width - 2;
-                    }
-                    if (move.PositionY <= 0)
-                    {
-                        move.PositionY = height - 2;
-                    }
+                    move.PositionX = 1;
                 }
-                
-                Thread.Sleep(100);
-            
+                if (move.PositionY >= height - 1)
+                {
+                    move.PositionY = 1;
+                }
+                if (move.PositionX <= 0)
+                {
+                    move.PositionX = width - 2;
+                }
+                if (move.PositionY <= 0)
+                {
+                    move.PositionY = height - 2;
+                }
+            }
+
+            Thread.Sleep(100);
 
 
-            
+
+
         }
         public static void PrisonBoard(int width, int height)
         {
-            //while (true)
-            //{
+
             Console.SetCursorPosition(0, 25);
             Console.CursorVisible = false;
 
-                for (int y = 0; y < height; y++)
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
                 {
-                    for (int x = 0; x < width; x++)
+
+
+                    if (y == 0 && x == 1)
                     {
-                        if (y == 0 && x == 1)
-                        {
-                            Console.Write(" Prison ");
-                            x += 7;
-                        }
-                        else if (y == height - 1 || y == 0 || x == width - 1 || x == 0)
-                        {
-                            Console.Write("█");
-                        }
-
-                        else
-                        {
-                            Console.Write(" ");
-                        }
-
+                        Console.Write(" Prison ");
+                        x += 7;
                     }
-                    Console.WriteLine();
+                    else if (y == height - 1 || y == 0 || x == width - 1 || x == 0)
+                    {
+                        Console.Write("█");
+                    }
+
+                    else
+                    {
+                        Console.Write(" ");
+                    }
 
                 }
-                
-            //}
+                Console.WriteLine();
+
+            }
+
+
+        }
+        public static void PoorBoard(int width, int height)
+        {
+
+            Console.SetCursorPosition(0, 35);
+            Console.CursorVisible = false;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    if (y == 0 && x == 1)
+                    {
+                        Console.Write(" Poorhouse ");
+                        x += 10;
+                    }
+                    else if (y == height - 1 || y == 0 || x == width - 1 || x == 0)
+                    {
+                        Console.Write("█");
+                    }
+
+                    else
+                    {
+                        Console.Write(" ");
+                    }
+
+                }
+                Console.WriteLine();
+
+            }
+
+
         }
     }
 }
