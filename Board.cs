@@ -30,7 +30,7 @@ namespace SinCity2._0
                 "Sjöberg"
             };
             Random rnd = new Random();
-            
+
             for (int i = 0; i < 20; i++)
             {
                 string name = namnLista[rnd.Next(namnLista.Length)];
@@ -55,12 +55,12 @@ namespace SinCity2._0
 
         //}
 
-
+        
         public static void DrawBoard(int width, int height, List<Person> register)
         {
             while (true)
             {
-                Random rnd = new Random();
+                //Random rnd = new Random();
                 Console.SetCursorPosition(0, 0);
                 Console.CursorVisible = false;
                 for (int y = 0; y < height; y++)
@@ -82,6 +82,7 @@ namespace SinCity2._0
                         {
                             foreach (Person p in peoples)
                             {
+
                                 if (p is Citizen)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Green;
@@ -111,27 +112,60 @@ namespace SinCity2._0
                     move.PositionX += move.DirectionX;
                     move.PositionY += move.DirectionY;
 
-                    if (move.PositionX > 100)
+                    if (move.PositionX >= width - 1)
                     {
                         move.PositionX = 1;
                     }
-                    if (move.PositionY > 25)
+                    if (move.PositionY >= height - 1)
                     {
                         move.PositionY = 1;
                     }
-                    if (move.PositionX < 0)
+                    if (move.PositionX <= 0)
                     {
-                        move.PositionX = 99;
+                        move.PositionX = width - 2;
                     }
-                    if (move.PositionY < 0)
+                    if (move.PositionY <= 0)
                     {
-                        move.PositionY = 24;
+                        move.PositionY = height - 2;
                     }
                 }
+
+                Thread.Sleep(1000);
+
+                
+            }
+        }
+        public static void PrisonBoard(int width, int height)
+        {
+            while (true)
+            {
+                Console.SetCursorPosition(0, 0);
+                Console.CursorVisible = false;
+
+                for (int y = 8; y < height; y++)
                 {
-                    
+                    for (int x = 0; x < width; x++)
+                    {
+                        if (y == 8 && x == 1)
+                        {
+                            Console.Write(" Prison ");
+                            x += 7;
+                        }
+                        else if (y == height - 1 || y == 8 || x == width - 1 || x == 0)
+                        {
+                            Console.Write("█");
+                        }
+
+                        else
+                        {
+                            Console.Write(" ");
+                        }
+
+                    }
+                    Console.WriteLine();
+
                 }
-                Thread.Sleep(10);
+                
             }
         }
     }

@@ -9,6 +9,7 @@
             Board.Reg(register);
             
             Board.DrawBoard(100, 25, register);
+            Board.PrisonBoard(10, 10);
         }
     }
 }
