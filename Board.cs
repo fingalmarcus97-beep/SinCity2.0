@@ -125,13 +125,11 @@ namespace SinCity2._0
                     }
                 }
                 
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             
 
 
-            //}
-            //Console.SetCursorPosition(0, 26);
-            //PrisonBoard(10, 10);
+            
         }
         public static void PrisonBoard(int width, int height)
         {
