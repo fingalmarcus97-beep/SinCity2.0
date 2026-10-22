@@ -48,19 +48,14 @@ namespace SinCity2._0
             }
 
         }
-        //public static void Movement()
-        //{
-        //    Random random = new Random();
-
-
-        //}
+        
 
         
         public static void DrawBoard(int width, int height, List<Person> register)
         {
-            while (true)
-            {
-                //Random rnd = new Random();
+            //while (true)
+            //{
+           
                 Console.SetCursorPosition(0, 0);
                 Console.CursorVisible = false;
                 for (int y = 0; y < height; y++)
@@ -129,29 +124,32 @@ namespace SinCity2._0
                         move.PositionY = height - 2;
                     }
                 }
-
-                Thread.Sleep(1000);
-
                 
-            }
+                Thread.Sleep(1000);
+            
+
+
+            //}
+            //Console.SetCursorPosition(0, 26);
+            //PrisonBoard(10, 10);
         }
         public static void PrisonBoard(int width, int height)
         {
-            while (true)
-            {
-                Console.SetCursorPosition(0, 0);
-                Console.CursorVisible = false;
+            //while (true)
+            //{
+            Console.SetCursorPosition(0, 25);
+            Console.CursorVisible = false;
 
-                for (int y = 8; y < height; y++)
+                for (int y = 0; y < height; y++)
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        if (y == 8 && x == 1)
+                        if (y == 0 && x == 1)
                         {
                             Console.Write(" Prison ");
                             x += 7;
                         }
-                        else if (y == height - 1 || y == 8 || x == width - 1 || x == 0)
+                        else if (y == height - 1 || y == 0 || x == width - 1 || x == 0)
                         {
                             Console.Write("█");
                         }
@@ -166,7 +164,7 @@ namespace SinCity2._0
 
                 }
                 
-            }
+            //}
         }
     }
 }

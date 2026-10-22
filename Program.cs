@@ -7,9 +7,14 @@
 
             List<Person> register = new List<Person>();
             Board.Reg(register);
-            
-            Board.DrawBoard(100, 25, register);
-            Board.PrisonBoard(10, 10);
+
+            while (true)
+            {
+                Board.DrawBoard(100, 25, register);
+                Board.PrisonBoard(10, 10);
+                
+            }
         }
     }
 }
+                
