@@ -16,8 +16,6 @@
                 Thread.Sleep(100);
                 Board.PoorBoard(50, 10);
                 Status.Population(register);
-
-
             }
         }
     }

@@ -15,6 +15,7 @@ namespace SinCity2._0
             Width = width;
             Height = height;
         }
+
         public static void Reg(List<Person> register)
         {
             string[] namnLista =
@@ -29,6 +30,7 @@ namespace SinCity2._0
                 "Åkesson","Sahlberg","Edlund","Boström","Isaksson","Marklund",
                 "Sjöberg"
             };
+
             Random rnd = new Random();
 
             for (int i = 0; i < 20; i++)
@@ -46,18 +48,14 @@ namespace SinCity2._0
                 string name = namnLista[rnd.Next(namnLista.Length)];
                 register.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
-
         }
-
-
-
 
         public static void DrawBoard(int width, int height, List<Person> register)
         {
-            
 
             Console.SetCursorPosition(0, 0);
             Console.CursorVisible = false;
+
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
@@ -77,25 +75,18 @@ namespace SinCity2._0
                     {
                         foreach (Person p in peoples)
                         {
-
-
-
                             if (p is Citizen)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
-
                             }
                             else if (p is Thief)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-
                             }
                             else if (p is Police)
                             {
                                 Console.ForegroundColor = ConsoleColor.Blue;
-
                             }
-
                             Console.Write(p.Appearance);
                             Console.ResetColor();
                         }
@@ -129,12 +120,7 @@ namespace SinCity2._0
                     move.PositionY = height - 2;
                 }
             }
-
             Thread.Sleep(100);
-
-
-
-
         }
         public static void PrisonBoard(int width, int height)
         {
@@ -146,8 +132,6 @@ namespace SinCity2._0
             {
                 for (int x = 0; x < width; x++)
                 {
-
-
                     if (y == 0 && x == 1)
                     {
                         Console.Write(" Prison ");
@@ -157,18 +141,13 @@ namespace SinCity2._0
                     {
                         Console.Write("█");
                     }
-
                     else
                     {
                         Console.Write(" ");
                     }
-
                 }
                 Console.WriteLine();
-
             }
-
-
         }
         public static void PoorBoard(int width, int height)
         {
@@ -189,18 +168,13 @@ namespace SinCity2._0
                     {
                         Console.Write("█");
                     }
-
                     else
                     {
                         Console.Write(" ");
                     }
-
                 }
                 Console.WriteLine();
-
             }
-
-
         }
     }
 }

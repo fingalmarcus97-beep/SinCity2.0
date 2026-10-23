@@ -21,16 +21,22 @@ namespace SinCity2._0
             Name = name;
             DirectionX = Random.Shared.Next(-1, 2);
             DirectionY = Random.Shared.Next(-1, 2);
+            Inventory = new List<string>();
         }
     }
 
     internal class Citizen : Person
     {
-        public Citizen(int positionX, int positionY, string name) : base(positionX, positionY, name )
+        public Citizen(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
             Appearance = "C";
+            Inventory.Add("Plånbok");
+            Inventory.Add("Mobil");
+            Inventory.Add("Nycklar");
+            Inventory.Add("Hörlurar");
         }
     }
+
     internal class Thief : Person
     {
         public Thief(int positionX, int positionY, string name) : base(positionX, positionY, name)
@@ -38,6 +44,7 @@ namespace SinCity2._0
             Appearance = "T";
         }
     }
+
     internal class Police : Person
     {
         public Police(int positionX, int positionY, string name) : base(positionX, positionY, name)
