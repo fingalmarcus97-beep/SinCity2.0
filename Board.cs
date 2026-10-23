@@ -50,12 +50,12 @@ namespace SinCity2._0
             }
         }
 
-        public static void DrawBoard(int width, int height, List<Person> register)
+        public static void CityBoard(int width, int height, List<Person> register)
         {
 
             Console.SetCursorPosition(0, 0);
             Console.CursorVisible = false;
-
+          
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
@@ -125,8 +125,8 @@ namespace SinCity2._0
         public static void PrisonBoard(int width, int height)
         {
 
-            Console.SetCursorPosition(0, 25);
-            Console.CursorVisible = false;
+            //Console.SetCursorPosition(0, 25);
+            //Console.CursorVisible = false;
 
             for (int y = 0; y < height; y++)
             {
@@ -151,14 +151,16 @@ namespace SinCity2._0
         }
         public static void PoorBoard(int width, int height)
         {
-
-            Console.SetCursorPosition(0, 35);
-            Console.CursorVisible = false;
+            
+            //Console.SetCursorPosition(20, 25);
+            //Console.CursorVisible = false;
 
             for (int y = 0; y < height; y++)
             {
+                
                 for (int x = 0; x < width; x++)
                 {
+                    
                     if (y == 0 && x == 1)
                     {
                         Console.Write(" Poorhouse ");
@@ -174,7 +176,7 @@ namespace SinCity2._0
                     }
                 }
                 Console.WriteLine();
-            }
+            } 
         }
     }
 }

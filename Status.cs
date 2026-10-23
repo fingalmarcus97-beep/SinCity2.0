@@ -35,6 +35,7 @@ namespace SinCity2._0
             Console.Write("Citizens: " + totalCitizen);
             Console.Write(" || Thiefs: " + totalThief);
             Console.Write(" || Police: " + totalPolice);
+            Console.WriteLine();
         }
     }
 }
