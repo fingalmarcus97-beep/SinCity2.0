@@ -17,26 +17,17 @@ namespace SinCity2._0
             while (true)
             {
                 Board.CityBoard(100, 25, cityRegister);
+                Board.Remove(cityRegister, poorRegister);
                 Status.Population(cityRegister);
                 Board.PrisonBoard(10, 10);
-                Board.PoorBoard(50, 10);
+                Board.PoorBoard(50, 10, poorRegister);
+                 
             }
 
             
             
         }
-        //public static void Test(List<Person> cityRegister, List<Person> poorRegister)
-        //{
-        //    foreach (Person poor in cityRegister)
-        //    {
-        //        if (poor.Inventory.Count == 0)
-        //        {
-        //            cityRegister.Remove(poor);
-        //            poorRegister.Add(poor);
-
-        //        }
-        //    }
-        //}
+        
     }
 }
                 

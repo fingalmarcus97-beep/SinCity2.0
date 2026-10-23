@@ -10,6 +10,7 @@ namespace SinCity2._0
     {
         public static void Population(List<Person> register)
         {
+            
             int totalPopulation = register.Count;
             Console.WriteLine("Total population: " + totalPopulation);
 
@@ -31,10 +32,12 @@ namespace SinCity2._0
                 {
                     totalPolice++;
                 }
+                
             }
             Console.Write("Citizens: " + totalCitizen);
             Console.Write(" || Thiefs: " + totalThief);
             Console.Write(" || Police: " + totalPolice);
+            
             Console.WriteLine();
         }
     }

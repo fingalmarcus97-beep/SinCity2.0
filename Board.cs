@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
@@ -47,6 +48,18 @@ namespace SinCity2._0
             {
                 string name = namnLista[rnd.Next(namnLista.Length)];
                 register.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
+            }
+        }
+
+        public static void Remove(List<Person> cityRegister, List<Person> poorRegister)
+        {
+            foreach (Person poor in cityRegister.ToList())
+            {
+                if (poor is Citizen && poor.Inventory.Count == 0)
+                {
+                     cityRegister.Remove(poor);
+                     poorRegister.Add(poor);
+                }
             }
         }
 
@@ -141,6 +154,7 @@ namespace SinCity2._0
                     {
                         Console.Write("█");
                     }
+                    
                     else
                     {
                         Console.Write(" ");
@@ -148,19 +162,19 @@ namespace SinCity2._0
                 }
                 Console.WriteLine();
             }
+
         }
-        public static void PoorBoard(int width, int height)
+        public static void PoorBoard(int width, int height, List<Person> poorRegister)
         {
-            
+
             //Console.SetCursorPosition(20, 25);
             //Console.CursorVisible = false;
 
             for (int y = 0; y < height; y++)
             {
-                
                 for (int x = 0; x < width; x++)
                 {
-                    
+                    var peoples = poorRegister.Where(poorPeople => poorPeople.PositionX == x && poorPeople.PositionY == y).ToList();
                     if (y == 0 && x == 1)
                     {
                         Console.Write(" Poorhouse ");
@@ -170,13 +184,55 @@ namespace SinCity2._0
                     {
                         Console.Write("█");
                     }
+                    else if (peoples.Any())
+                    {
+                        foreach (Person p in peoples)
+                        {
+                            if (p is Citizen)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            else if (p is Thief)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                            }
+                            else if (p is Police)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Blue;
+                            }
+                            Console.Write(p.Appearance);
+                            Console.ResetColor();
+                        }
+                    }
                     else
                     {
                         Console.Write(" ");
                     }
                 }
                 Console.WriteLine();
-            } 
+            }
+            foreach (Person move in poorRegister)
+            {
+                move.PositionX += move.DirectionX;
+                move.PositionY += move.DirectionY;
+
+                if (move.PositionX >= width - 1)
+                {
+                    move.PositionX = 1;
+                }
+                if (move.PositionY >= height - 1)
+                {
+                    move.PositionY = 1;
+                }
+                if (move.PositionX <= 0)
+                {
+                    move.PositionX = width - 2;
+                }
+                if (move.PositionY <= 0)
+                {
+                    move.PositionY = height - 2;
+                }
+            }
         }
     }
 }
