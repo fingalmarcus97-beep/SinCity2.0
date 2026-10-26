@@ -30,10 +30,10 @@ namespace SinCity2._0
         public Citizen(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
             Appearance = "C";
-            //Inventory.Add("Plånbok");
-            //Inventory.Add("Mobil");
-            //Inventory.Add("Nycklar");
-            //Inventory.Add("Hörlurar");
+            Inventory.Add("Plånbok");
+            Inventory.Add("Mobil");
+            Inventory.Add("Nycklar");
+            Inventory.Add("Hörlurar");
         }
     }
 
@@ -42,7 +42,7 @@ namespace SinCity2._0
         public Thief(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
             Appearance = "T";
-            Inventory.Add("Mobil");
+            
         }
     }
 
@@ -51,7 +51,7 @@ namespace SinCity2._0
         public Police(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
             Appearance = "P";
-            Inventory.Add("Pistol");
+            
         }
     }
 }

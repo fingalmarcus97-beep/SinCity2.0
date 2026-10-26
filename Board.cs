@@ -135,7 +135,7 @@ namespace SinCity2._0
             }
             Thread.Sleep(100);
         }
-        public static void PrisonBoard(int width, int height)
+        public static void PrisonBoard(int width, int height, List<Person> prisonRegister)
         {
 
             //Console.SetCursorPosition(0, 25);
@@ -145,6 +145,7 @@ namespace SinCity2._0
             {
                 for (int x = 0; x < width; x++)
                 {
+                    var peoples = prisonRegister.Where(prisoners => prisoners.PositionX == x && prisoners.PositionY == y).ToList();
                     if (y == 0 && x == 1)
                     {
                         Console.Write(" Prison ");
