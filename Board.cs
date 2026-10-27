@@ -200,19 +200,15 @@ namespace SinCity2._0
             }
             foreach (Thief prisoner in prisonRegister.ToList())
             {
-                int prisonTime = prisoner.Inventory.Count * 5;
+                int prisonTime = prisoner.Inventory.Count * 10;
                 prisoner.PrisonSentence = DateTime.Now.AddSeconds(prisonTime);
                 prisoner.Inventory.RemoveAll(prisoner.Inventory.Contains);
-                    if (DateTime.Now >= prisoner.PrisonSentence)
+                    if (DateTime.Now == prisoner.PrisonSentence)
                     {
                         prisonRegister.Remove(prisoner);
                         cityRegister.Add(prisoner);
                     }
-
-
-
             }
-
 
         }
         public static void PoorBoard(int width, int height, List<Person> poorRegister)
