@@ -203,9 +203,6 @@ namespace SinCity2._0
                 int prisonTime = prisoner.Inventory.Count;
                 prisoner.PrisonSentence = prisonTime;
                 prisoner.Inventory.RemoveAll(prisoner.Inventory.Contains);
-
-                
-
             }
             //foreach (Thief prisoner in prisonRegister.ToList())
             //{

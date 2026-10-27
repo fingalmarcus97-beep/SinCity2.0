@@ -10,34 +10,34 @@ namespace SinCity2._0
     {
         public static void Population(List<Person> register)
         {
-            
+
             int totalPopulation = register.Count;
             Console.WriteLine("Total population: " + totalPopulation);
 
             int totalCitizen = 0;
             int totalThief = 0;
             int totalPolice = 0;
-            
+
             foreach (Person person in register)
             {
-                if(person is Citizen)
+                if (person is Citizen)
                 {
                     totalCitizen++;
                 }
-                else if(person is Thief)
+                else if (person is Thief)
                 {
                     totalThief++;
                 }
-                else if( person is Police)
+                else if (person is Police)
                 {
                     totalPolice++;
                 }
-                
+
             }
             Console.Write("Citizens: " + totalCitizen);
             Console.Write(" || Thiefs: " + totalThief);
-            Console.Write(" || Police: " + totalPolice+" ");
-            
+            Console.Write(" || Police: " + totalPolice + " ");
+
             Console.WriteLine();
         }
     }

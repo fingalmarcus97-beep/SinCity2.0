@@ -21,13 +21,13 @@ namespace SinCity2._0
                 Status.Population(cityRegister);
                 Board.PrisonBoard(10, 10, prisonRegister, cityRegister);
                 Board.PoorBoard(50, 10, poorRegister);
-                Interaction.Interactions(cityRegister,prisonRegister);
+                Interaction.Interactions(cityRegister, prisonRegister);
             }
-            
+
 
 
         }
-        
+
     }
 }
-                
+

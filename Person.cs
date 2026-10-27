@@ -44,7 +44,7 @@ namespace SinCity2._0
         {
             Appearance = "T";
             PrisonSentence = 0;
-            
+
         }
     }
 
@@ -53,7 +53,7 @@ namespace SinCity2._0
         public Police(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
             Appearance = "P";
-            
+
         }
     }
 }
