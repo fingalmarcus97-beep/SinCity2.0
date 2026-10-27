@@ -39,9 +39,11 @@ namespace SinCity2._0
 
     internal class Thief : Person
     {
+        public int PrisonSentence { get; set; }
         public Thief(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
             Appearance = "T";
+            PrisonSentence = 0;
             
         }
     }

@@ -44,7 +44,7 @@ namespace SinCity2._0
                 string name = namnLista[rnd.Next(namnLista.Length)];
                 register.Add(new Thief(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 20; i++)
             {
                 string name = namnLista[rnd.Next(namnLista.Length)];
                 register.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
@@ -57,8 +57,8 @@ namespace SinCity2._0
             {
                 if (poor is Citizen && poor.Inventory.Count == 0)
                 {
-                     cityRegister.Remove(poor);
-                     poorRegister.Add(poor);
+                    cityRegister.Remove(poor);
+                    poorRegister.Add(poor);
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace SinCity2._0
 
             Console.SetCursorPosition(0, 0);
             Console.CursorVisible = false;
-          
+
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
@@ -133,9 +133,9 @@ namespace SinCity2._0
                     move.PositionY = height - 2;
                 }
             }
-            Thread.Sleep(100);
+            //Thread.Sleep(100);
         }
-        public static void PrisonBoard(int width, int height, List<Person> prisonRegister)
+        public static void PrisonBoard(int width, int height, List<Person> prisonRegister, List<Person> cityRegister)
         {
 
             //Console.SetCursorPosition(0, 25);
@@ -155,7 +155,20 @@ namespace SinCity2._0
                     {
                         Console.Write("█");
                     }
-                    
+                    else if (peoples.Any())
+                    {
+                        foreach (Person p in peoples)
+                        {
+                            if (p is Thief)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                            }
+
+                            Console.Write(p.Appearance);
+                            Console.ResetColor();
+                        }
+                    }
+
                     else
                     {
                         Console.Write(" ");
@@ -163,6 +176,52 @@ namespace SinCity2._0
                 }
                 Console.WriteLine();
             }
+            foreach (Person move in prisonRegister)
+            {
+                move.PositionX += move.DirectionX;
+                move.PositionY += move.DirectionY;
+
+                if (move.PositionX >= width - 1)
+                {
+                    move.PositionX = 1;
+                }
+                if (move.PositionY >= height - 1)
+                {
+                    move.PositionY = 1;
+                }
+                if (move.PositionX <= 0)
+                {
+                    move.PositionX = width - 2;
+                }
+                if (move.PositionY <= 0)
+                {
+                    move.PositionY = height - 2;
+                }
+            }
+            foreach (Thief prisoner in prisonRegister.ToList())
+            {
+                int prisonTime = prisoner.Inventory.Count;
+                prisoner.PrisonSentence = prisonTime;
+                prisoner.Inventory.RemoveAll(prisoner.Inventory.Contains);
+
+                
+
+            }
+            //foreach (Thief prisoner in prisonRegister.ToList())
+            //{
+            //    int prisonTime = prisoner.Inventory.Count;
+            //    for (int i = 0; i < prisoner.PrisonSentence; prisonTime--)
+            //    {
+            //        //DateTime.Now.Second
+            //        if (prisonTime == 0)
+            //        {
+            //            prisonRegister.Remove(prisoner);
+            //            cityRegister.Add(prisoner);
+
+            //        }
+            //    }
+            //}
+
 
         }
         public static void PoorBoard(int width, int height, List<Person> poorRegister)
@@ -192,14 +251,6 @@ namespace SinCity2._0
                             if (p is Citizen)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
-                            }
-                            else if (p is Thief)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                            }
-                            else if (p is Police)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Blue;
                             }
                             Console.Write(p.Appearance);
                             Console.ResetColor();
