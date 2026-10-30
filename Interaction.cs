@@ -7,6 +7,8 @@ namespace SinCity2._0
     internal class Interaction
     {
         static int newsNumber = 0;
+       public  static int arrestedNumber = 0;
+       public  static int robbedNumber = 0;
         public static void Interactions(List<Person> cityRegister, List<Person> prisonRegister, Queue<string> newsFeed)
         {
 
@@ -32,8 +34,9 @@ namespace SinCity2._0
 
                         person2.Inventory.Remove(thing);
                         newsNumber++;
+                        robbedNumber++;
                         newsFeed.Enqueue($" {newsNumber}. Tjuven {person1.Name} tog {thing} från medborgaren {person2.Name}.");
-
+                        
 
                     }
                     else if (person1 is Police && person2 is Thief && person1.PositionX == person2.PositionX && person1.PositionY == person2.PositionY && person2.Inventory.Count > 0)
@@ -42,6 +45,7 @@ namespace SinCity2._0
 
                         person1.Inventory = stoleThings;
                         newsNumber++;
+                        arrestedNumber++;
                         newsFeed.Enqueue($" {newsNumber}. Polisen {person1.Name} arresterade tjuven {person2.Name}.");
 
 

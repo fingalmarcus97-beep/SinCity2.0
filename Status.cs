@@ -12,8 +12,9 @@ namespace SinCity2._0
         {
 
             int totalPopulation = register.Count;
-            Console.WriteLine("Total population: " + totalPopulation);
-
+            Console.Write("Total population: " + totalPopulation);
+            Console.Write(" || Total arrested: " + Interaction.arrestedNumber);
+            Console.WriteLine(" || Total robbed: " + Interaction.robbedNumber);
             int totalCitizen = 0;
             int totalThief = 0;
             int totalPolice = 0;

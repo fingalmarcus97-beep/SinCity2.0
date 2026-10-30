@@ -12,8 +12,8 @@ namespace SinCity2._0
             List<Person> prisonRegister = new List<Person>();
             List<Person> poorRegister = new List<Person>();
             Queue<string> newsFeed = new Queue<string>();
-
             
+
 
 
             Board.Reg(cityRegister);
