@@ -27,7 +27,7 @@ namespace SinCity2._0
                 Board.PoorBoard(50, 10, poorRegister);
                 Interaction.Interactions(cityRegister, prisonRegister, newsFeed);
 
-                
+               
                 foreach (string message in newsFeed.ToList())
                 {
                     Console.WriteLine(message);

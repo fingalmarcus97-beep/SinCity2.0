@@ -88,8 +88,9 @@ namespace SinCity2._0
         }
         public static void CityBoard(int width, int height, List<Person> register)
         {
-
+            
             Console.SetCursorPosition(0, 0);
+
             Console.CursorVisible = false;
 
             for (int y = 0; y < height; y++)
@@ -225,9 +226,9 @@ namespace SinCity2._0
             Release(prisonRegister, cityRegister);
 
 
-            
 
-       
+
+
 
         }
         public static void PoorBoard(int width, int height, List<Person> poorRegister)
