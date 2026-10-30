@@ -34,15 +34,14 @@ namespace SinCity2._0
                         person1.Inventory = stoleThings;
                         //person2.Inventory.RemoveAll(person2.Inventory.Contains);
 
-                        cityRegister.Remove(person2);
-                        prisonRegister.Add(person2);
+                        Board.ToPrison((Thief)person2, prisonRegister, cityRegister);
                     }
                 }
 
             }
+         
 
-
-        }
+    }
 
 
     }

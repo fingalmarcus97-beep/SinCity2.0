@@ -62,7 +62,30 @@ namespace SinCity2._0
                 }
             }
         }
+        public static void ToPrison(Thief thief, List<Person> prisonRegister, List<Person> cityRegister)
+        {
 
+            int prisonTime = thief.Inventory.Count * 10;
+
+            thief.Inventory.Clear();
+
+            thief.PrisonSentence = DateTime.Now.AddSeconds(prisonTime);
+
+            cityRegister.Remove(thief);
+            prisonRegister.Add(thief);
+        }
+
+        public static void Release(List<Person> prisonRegister, List<Person> cityRegister)
+        {
+            foreach (Thief thief in prisonRegister.ToList())
+            {
+                if (DateTime.Now >= thief.PrisonSentence)
+                {
+                    prisonRegister.Remove(thief);
+                    cityRegister.Add(thief);
+                }
+            }
+        }
         public static void CityBoard(int width, int height, List<Person> register)
         {
 
@@ -198,17 +221,13 @@ namespace SinCity2._0
                     move.PositionY = height - 2;
                 }
             }
-            foreach (Thief prisoner in prisonRegister.ToList())
-            {
-                int prisonTime = prisoner.Inventory.Count * 10;
-                prisoner.PrisonSentence = DateTime.Now.AddSeconds(prisonTime);
-                prisoner.Inventory.RemoveAll(prisoner.Inventory.Contains);
-                    if (DateTime.Now == prisoner.PrisonSentence)
-                    {
-                        prisonRegister.Remove(prisoner);
-                        cityRegister.Add(prisoner);
-                    }
-            }
+
+            Release(prisonRegister, cityRegister);
+
+
+            
+
+       
 
         }
         public static void PoorBoard(int width, int height, List<Person> poorRegister)
