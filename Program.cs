@@ -13,6 +13,7 @@ namespace SinCity2._0
             List<Person> poorRegister = new List<Person>();
             Queue<string> newsFeed = new Queue<string>();
 
+            
 
 
             Board.Reg(cityRegister);
@@ -26,14 +27,21 @@ namespace SinCity2._0
                 Board.PoorBoard(50, 10, poorRegister);
                 Interaction.Interactions(cityRegister, prisonRegister, newsFeed);
 
-                foreach(string message in newsFeed.ToList())
+                
+                foreach (string message in newsFeed.ToList())
                 {
                     Console.WriteLine(message);
-                    if (newsFeed.Count() > 2)
-                    {
-                        newsFeed.Dequeue();
-                    }
+
                 }
+                while (newsFeed.Count() > 10)
+                {
+                    newsFeed.Dequeue();
+
+
+
+                }
+
+
             }
 
 
