@@ -123,8 +123,8 @@ namespace SinCity2._0
                     }
                     else if (peoples.Any())
                     {
-                        foreach (Person p in peoples)
-                        {
+                        
+                        Person p = peoples.First();
                             if (p is Citizen)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
@@ -139,7 +139,7 @@ namespace SinCity2._0
                             }
                             Console.Write(p.Appearance);
                             Console.ResetColor();
-                        }
+                        
                     }
                     else
                     {
@@ -194,8 +194,8 @@ namespace SinCity2._0
                     }
                     else if (peoples.Any())
                     {
-                        foreach (Person p in peoples)
-                        {
+                        
+                        Person p = peoples.First();
                             if (p is Thief)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
@@ -203,7 +203,7 @@ namespace SinCity2._0
 
                             Console.Write(p.Appearance);
                             Console.ResetColor();
-                        }
+                        
                     }
 
                     else
@@ -266,15 +266,15 @@ namespace SinCity2._0
                     }
                     else if (peoples.Any())
                     {
-                        foreach (Person p in peoples)
-                        {
+                        
+                            Person p = peoples.First();
                             if (p is Citizen)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
                             }
                             Console.Write(p.Appearance);
                             Console.ResetColor();
-                        }
+                        
                     }
                     else
                     {
