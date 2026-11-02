@@ -8,6 +8,9 @@ namespace SinCity2._0
 {
     internal class Board
     {
+        static int citizenPop = 20;
+        static int thiefPop = 10;
+        static int policePop = 5;
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -34,22 +37,32 @@ namespace SinCity2._0
 
             Random rnd = new Random();
 
-            for (int i = 0; i < 20; i++)
+
+
+
+            for (int i = 0; i < citizenPop; i++)
             {
                 string name = namnLista[rnd.Next(namnLista.Length)];
                 register.Add(new Citizen(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < thiefPop; i++)
             {
                 string name = namnLista[rnd.Next(namnLista.Length)];
                 register.Add(new Thief(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < policePop; i++)
             {
                 string name = namnLista[rnd.Next(namnLista.Length)];
                 register.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
+
+
+
+
+
+
         }
+       
 
         public static void Remove(List<Person> cityRegister, List<Person> poorRegister)
         {
@@ -88,7 +101,7 @@ namespace SinCity2._0
         }
         public static void CityBoard(int width, int height, List<Person> register)
         {
-            
+
             Console.SetCursorPosition(0, 0);
 
             Console.CursorVisible = false;

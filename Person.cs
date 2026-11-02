@@ -23,6 +23,9 @@ namespace SinCity2._0
             DirectionY = Random.Shared.Next(-1, 2);
             Inventory = new List<string>();
         }
+
+
+
     }
 
     internal class Citizen : Person
@@ -55,4 +58,10 @@ namespace SinCity2._0
 
         }
     }
+
+
+
+
+
 }
+
