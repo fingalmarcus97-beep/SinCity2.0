@@ -27,12 +27,6 @@ namespace SinCity2._0
                 Board.PoorBoard(50, 10, poorRegister);
                 Interaction.Interactions(cityRegister, prisonRegister, newsFeed);
 
-               
-                foreach (string message in newsFeed.ToList())
-                {
-                    Console.WriteLine(message);
-
-                }
                 while (newsFeed.Count() > 10)
                 {
                     newsFeed.Dequeue();
@@ -40,6 +34,12 @@ namespace SinCity2._0
 
 
                 }
+                foreach (string message in newsFeed.ToList())
+                {
+                    Console.WriteLine(message);
+
+                }
+                
 
 
             }
