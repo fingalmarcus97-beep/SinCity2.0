@@ -37,9 +37,6 @@ namespace SinCity2._0
 
             Random rnd = new Random();
 
-
-
-
             for (int i = 0; i < citizenPop; i++)
             {
                 string name = namnLista[rnd.Next(namnLista.Length)];
@@ -55,14 +52,7 @@ namespace SinCity2._0
                 string name = namnLista[rnd.Next(namnLista.Length)];
                 register.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), name));
             }
-
-
-
-
-
-
         }
-       
 
         public static void Remove(List<Person> cityRegister, List<Person> poorRegister)
         {
@@ -75,15 +65,12 @@ namespace SinCity2._0
                 }
             }
         }
+
         public static void ToPrison(Thief thief, List<Person> prisonRegister, List<Person> cityRegister)
         {
-
             int prisonTime = thief.Inventory.Count * 10;
-
             thief.Inventory.Clear();
-
             thief.PrisonSentence = DateTime.Now.AddSeconds(prisonTime);
-
             cityRegister.Remove(thief);
             prisonRegister.Add(thief);
         }
@@ -101,9 +88,7 @@ namespace SinCity2._0
         }
         public static void CityBoard(int width, int height, List<Person> register)
         {
-
             Console.SetCursorPosition(0, 0);
-
             Console.CursorVisible = false;
 
             for (int y = 0; y < height; y++)
@@ -123,23 +108,21 @@ namespace SinCity2._0
                     }
                     else if (peoples.Any())
                     {
-                        
                         Person p = peoples.First();
-                            if (p is Citizen)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                            }
-                            else if (p is Thief)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                            }
-                            else if (p is Police)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Blue;
-                            }
-                            Console.Write(p.Appearance);
-                            Console.ResetColor();
-                        
+                        if (p is Citizen)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        else if (p is Thief)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        }
+                        else if (p is Police)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                        }
+                        Console.Write(p.Appearance);
+                        Console.ResetColor();
                     }
                     else
                     {
@@ -148,6 +131,7 @@ namespace SinCity2._0
                 }
                 Console.WriteLine();
             }
+
             foreach (Person move in register)
             {
                 move.PositionX += move.DirectionX;
@@ -170,13 +154,12 @@ namespace SinCity2._0
                     move.PositionY = height - 2;
                 }
             }
-            //Thread.Sleep(100);
+            Thread.Sleep(100);
         }
+
         public static void PrisonBoard(int width, int height, List<Person> prisonRegister, List<Person> cityRegister)
         {
-
-            //Console.SetCursorPosition(0, 25);
-            //Console.CursorVisible = false;
+            Console.SetCursorPosition(0, 29);
 
             for (int y = 0; y < height; y++)
             {
@@ -194,18 +177,14 @@ namespace SinCity2._0
                     }
                     else if (peoples.Any())
                     {
-                        
                         Person p = peoples.First();
-                            if (p is Thief)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                            }
-
-                            Console.Write(p.Appearance);
-                            Console.ResetColor();
-                        
+                        if (p is Thief)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        }
+                        Console.Write(p.Appearance);
+                        Console.ResetColor();
                     }
-
                     else
                     {
                         Console.Write(" ");
@@ -213,6 +192,7 @@ namespace SinCity2._0
                 }
                 Console.WriteLine();
             }
+
             foreach (Person move in prisonRegister)
             {
                 move.PositionX += move.DirectionX;
@@ -237,21 +217,13 @@ namespace SinCity2._0
             }
 
             Release(prisonRegister, cityRegister);
-
-
-
-
-
-
         }
+
         public static void PoorBoard(int width, int height, List<Person> poorRegister)
         {
-
-            //Console.SetCursorPosition(20, 25);
-            //Console.CursorVisible = false;
-
             for (int y = 0; y < height; y++)
             {
+                Console.SetCursorPosition(11, 29 + y);
                 for (int x = 0; x < width; x++)
                 {
                     var peoples = poorRegister.Where(poorPeople => poorPeople.PositionX == x && poorPeople.PositionY == y).ToList();
@@ -266,15 +238,13 @@ namespace SinCity2._0
                     }
                     else if (peoples.Any())
                     {
-                        
-                            Person p = peoples.First();
-                            if (p is Citizen)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                            }
-                            Console.Write(p.Appearance);
-                            Console.ResetColor();
-                        
+                        Person p = peoples.First();
+                        if (p is Citizen)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.Write(p.Appearance);
+                        Console.ResetColor();
                     }
                     else
                     {
@@ -283,6 +253,7 @@ namespace SinCity2._0
                 }
                 Console.WriteLine();
             }
+
             foreach (Person move in poorRegister)
             {
                 move.PositionX += move.DirectionX;

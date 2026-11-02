@@ -8,9 +8,9 @@ namespace SinCity2._0
 {
     internal class Status
     {
-        public static void Population(List<Person> register)
+        public static void Population(List<Person> register, List<Person> prisonRegister)
         {
-
+            int prisonPopulation = prisonRegister.Count;
             int totalPopulation = register.Count;
             Console.Write("Total population: " + totalPopulation);
             Console.Write(" || Total arrested: " + Interaction.arrestedNumber);
@@ -33,12 +33,11 @@ namespace SinCity2._0
                 {
                     totalPolice++;
                 }
-
             }
             Console.Write("Citizens: " + totalCitizen);
             Console.Write(" || Thiefs: " + totalThief);
-            Console.Write(" || Police: " + totalPolice + " ");
-
+            Console.Write(" || Police: " + totalPolice);
+            Console.Write(" || Prisoners: " + prisonPopulation + " ");
             Console.WriteLine();
         }
     }
