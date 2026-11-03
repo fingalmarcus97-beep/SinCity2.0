@@ -12,13 +12,16 @@ namespace SinCity2._0
         {
             int prisonPopulation = prisonRegister.Count;
             int totalPopulation = register.Count;
-            Console.Write("Total population: " + totalPopulation);
-            Console.Write(" || Total arrested: " + Interaction.arrestedNumber);
-            Console.WriteLine(" || Total robbed: " + Interaction.robbedNumber);
+            Console.Write($"Total population: {totalPopulation}");
+            Console.Write($" || Total arrested: {Interaction.arrestedNumber}");
+            Console.Write($" || Total robbed: {Interaction.robbedNumber}");
+            
+            
 
             int totalCitizen = 0;
             int totalThief = 0;
             int totalPolice = 0;
+            int totalMurderer = 0;
 
             foreach (Person person in register)
             {
@@ -34,11 +37,32 @@ namespace SinCity2._0
                 {
                     totalPolice++;
                 }
+                else if (person is Murderer)
+                {
+                    totalMurderer++;
+                }
             }
-            Console.Write("Citizens: " + totalCitizen);
-            Console.Write(" || Thiefs: " + totalThief);
-            Console.Write(" || Police: " + totalPolice);
-            Console.Write(" || Prisoners: " + prisonPopulation + " ");
+
+            if (totalMurderer > 0)
+            {
+                
+                Console.WriteLine($" || Total murdered: {Interaction.murderedNumber}".PadRight(70, ' '));
+
+            }
+            else
+            {
+                Console.WriteLine();
+            }
+
+            Console.Write($"Citizens: {totalCitizen}");
+            Console.Write($" || Thiefs: {totalThief}");
+            Console.Write($" || Police: {totalPolice}");
+            Console.Write($" || Prisoners: {prisonPopulation}");
+            if (totalMurderer > 0)
+            {
+                Console.Write($" || Murderers: {totalMurderer} ".PadRight(70, ' '));
+      
+            }
             Console.WriteLine();
         }
 

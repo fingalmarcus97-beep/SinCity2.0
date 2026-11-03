@@ -9,7 +9,8 @@ namespace SinCity2._0
         static int newsNumber = 0;
         public static int arrestedNumber = 0;
         public static int robbedNumber = 0;
-        static string space = "                               ";
+        public static int murderedNumber = 0;
+
         public static void Interactions(List<Person> cityRegister, List<Person> prisonRegister, Queue<string> newsFeed)
         {
             foreach (var person1 in cityRegister.ToList())
@@ -22,7 +23,7 @@ namespace SinCity2._0
                     {
                         newsNumber++;
                         Thread.Sleep(200);
-                        newsFeed.Enqueue($" {newsNumber}. Polisen {person1.Name} säger hej till medborgaren {person2.Name}.{space}");
+                        newsFeed.Enqueue($" {newsNumber}. Polisen {person1.Name} säger hej till medborgaren {person2.Name}.".PadRight(70, ' '));
                     }
                     else if (person1 is Thief && person2 is Citizen && checkPosition)
                     {
@@ -32,7 +33,7 @@ namespace SinCity2._0
                         newsNumber++;
                         robbedNumber++;
                         Thread.Sleep(200);
-                        newsFeed.Enqueue($" {newsNumber}. Tjuven {person1.Name} tog {thing} från medborgaren {person2.Name}.{space}");
+                        newsFeed.Enqueue($" {newsNumber}. Tjuven {person1.Name} tog {thing} från medborgaren {person2.Name}.".PadRight(70, ' '));
                     }
                     else if (person1 is Police && person2 is Thief && checkPosition && person2.Inventory.Count > 0)
                     {
@@ -42,14 +43,22 @@ namespace SinCity2._0
                         newsNumber++;
                         arrestedNumber++;
                         Thread.Sleep(200);
-                        newsFeed.Enqueue($" {newsNumber}. Polisen {person1.Name} arresterade tjuven {person2.Name}.{space}");
+                        newsFeed.Enqueue($" {newsNumber}. Polisen {person1.Name} arresterade tjuven {person2.Name}.".PadRight(70, ' '));
 
                         Board.ToPrison((Thief)person2, prisonRegister, cityRegister);
+                    }
+                    else if (person1 is Murderer && person2 != person1 && checkPosition)
+                    {
+                        newsNumber++;
+                        murderedNumber++;
+                        Thread.Sleep(200);
+                        newsFeed.Enqueue($" {newsNumber}. {person2.Name} blev mördad!".PadRight(70, ' '));
+                        cityRegister.Remove(person2);
                     }
                 }
             }
         }
-        public static void AddPopulation(List<Person> register, Queue<string> newsFeed)
+        public static void AddPopulation(List<Person> cityRegister, Queue<string> newsFeed)
         {
             if (Console.KeyAvailable)
             {
@@ -58,18 +67,23 @@ namespace SinCity2._0
                 {
                     case 'c':
                         newsNumber++;
-                        register.Add(new Citizen(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
-                        newsFeed.Enqueue($" {newsNumber}. En ny person flyttar in i staden.{space}");
+                        cityRegister.Add(new Citizen(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
+                        newsFeed.Enqueue($" {newsNumber}. En ny person flyttar in i staden.".PadRight(70, ' '));
                         break;
                     case 't':
                         newsNumber++;
-                        register.Add(new Thief(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
-                        newsFeed.Enqueue($" {newsNumber}. En tjuv flyttar in i staden.{space}");
+                        cityRegister.Add(new Thief(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
+                        newsFeed.Enqueue($" {newsNumber}. En tjuv flyttar in i staden.".PadRight(70, ' '));
                         break;
                     case 'p':
                         newsNumber++;
-                        register.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
-                        newsFeed.Enqueue($" {newsNumber}. En polis flyttar in i staden.{space}");
+                        cityRegister.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
+                        newsFeed.Enqueue($" {newsNumber}. En polis flyttar in i staden.".PadRight(70, ' '));
+                        break;
+                    case 'm':
+                        newsNumber++;
+                        cityRegister.Add(new Murderer(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
+                        newsFeed.Enqueue($" {newsNumber}. En MÖRDARE är lös i staden.".PadRight(70, ' '));
                         break;
                 }
             }

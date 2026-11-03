@@ -17,7 +17,7 @@ namespace SinCity2._0
             while (true)
             {
                 Board.CityBoard(100, 25, cityRegister);
-                Board.Remove(cityRegister, poorRegister);
+                Board.MoveToPoorhouse(cityRegister, poorRegister);
                 Console.WriteLine();
                 Status.Population(cityRegister, prisonRegister);
                 Board.PrisonBoard(10, 10, prisonRegister, cityRegister);

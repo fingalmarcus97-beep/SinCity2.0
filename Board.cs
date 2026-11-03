@@ -183,7 +183,7 @@ namespace SinCity2._0
             }
         }
 
-        public static void Remove(List<Person> cityRegister, List<Person> poorRegister)
+        public static void MoveToPoorhouse(List<Person> cityRegister, List<Person> poorRegister)
         {
             foreach (Person poor in cityRegister.ToList())
             {
