@@ -24,29 +24,8 @@ namespace SinCity2._0
                 Board.PoorBoard(50, 10, poorRegister);
                 Interaction.Interactions(cityRegister, prisonRegister, newsFeed);
                 Interaction.AddPopulation(cityRegister, newsFeed);
-
-                while (newsFeed.Count() > 10)
-                {
-                    newsFeed.Dequeue();
-                }
-
-                Console.WriteLine();
-                Console.WriteLine("█ NEWSFEED ██████████████████████████████████████████████████");
-                foreach (string message in newsFeed.ToList())
-                {
-                    Console.WriteLine(message);
-                }
-                Console.WriteLine("█████████████████████████████████████████████████████████████");
+                Status.NewsFeed(newsFeed);
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-

@@ -23,6 +23,25 @@ namespace SinCity2._0
             DirectionY = Random.Shared.Next(-1, 2);
             Inventory = new List<string>();
         }
+
+        public static string SetName()
+        {
+            string[] namnLista =
+            {
+                "Andersson","Johansson","Karlsson","Nilsson","Eriksson",
+                "Larsson","Olsson","Persson","Svensson","Gustafsson","Lindberg",
+                "Lundgren","Bergström","Holm","Sandberg","Björk",
+                "Dahl","Berg","Nyström","Håkansson","Ström",
+                "Lindqvist","Mattsson","Fredriksson","Wallin",
+                "Ekström","Axelsson","Berglund","Samuelsson",
+                "Löfgren","Hellström","Blomqvist","Norberg",
+                "Åkesson","Sahlberg","Edlund","Boström","Isaksson","Marklund",
+                "Sjöberg"
+            };
+
+            Random rnd = new Random();
+            return namnLista[rnd.Next(namnLista.Length)];
+        }
     }
 
     internal class Citizen : Person

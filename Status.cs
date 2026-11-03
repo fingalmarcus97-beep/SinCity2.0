@@ -15,6 +15,7 @@ namespace SinCity2._0
             Console.Write("Total population: " + totalPopulation);
             Console.Write(" || Total arrested: " + Interaction.arrestedNumber);
             Console.WriteLine(" || Total robbed: " + Interaction.robbedNumber);
+
             int totalCitizen = 0;
             int totalThief = 0;
             int totalPolice = 0;
@@ -39,6 +40,22 @@ namespace SinCity2._0
             Console.Write(" || Police: " + totalPolice);
             Console.Write(" || Prisoners: " + prisonPopulation + " ");
             Console.WriteLine();
+        }
+
+        public static void NewsFeed (Queue<string> newsFeed)
+        {
+            while (newsFeed.Count() > 10)
+            {
+                newsFeed.Dequeue();
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("█ NEWSFEED ██████████████████████████████████████████████████");
+            foreach (string message in newsFeed.ToList())
+            {
+                Console.WriteLine(message);
+            }
+            Console.WriteLine("█████████████████████████████████████████████████████████████");
         }
     }
 }
