@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Text;
 
 namespace SinCity2._0
@@ -18,7 +19,7 @@ namespace SinCity2._0
                 foreach (var person2 in cityRegister.ToList())
                 {
                     bool checkPosition = person1.PositionX == person2.PositionX && person1.PositionY == person2.PositionY;
-                    
+
                     if (person1 is Police && person2 is Citizen && checkPosition)
                     {
                         newsNumber++;
@@ -58,10 +59,11 @@ namespace SinCity2._0
                 }
             }
         }
-        public static void AddPopulation(List<Person> cityRegister, Queue<string> newsFeed)
+        public static void AddPopulation(List<Person> cityRegister, List<Person> prisonRegister, List<Person> poorRegister, Queue<string> newsFeed)
         {
             if (Console.KeyAvailable)
             {
+
                 ConsoleKeyInfo key = Console.ReadKey(true);
                 switch (key.KeyChar)
                 {
@@ -85,8 +87,22 @@ namespace SinCity2._0
                         cityRegister.Add(new Murderer(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
                         newsFeed.Enqueue($" {newsNumber}. En MÖRDARE är lös i staden.".PadRight(70, ' '));
                         break;
+                    case 'n':
+                        newsNumber++;
+                        newsFeed.Enqueue($" {newsNumber}. NUKE INCOMING!".PadRight(70, ' '));
+                        cityRegister.Clear();
+                        prisonRegister.Clear();
+                        poorRegister.Clear();
+                        break;
                 }
             }
+        }
+        public static void Nuke(Queue<string> newsFeed)
+        {
+
+
+
+
         }
     }
 }

@@ -77,7 +77,7 @@ namespace SinCity2._0
     {
         public Murderer(int positionX, int positionY, string name) : base(positionX, positionY, name)
         {
-           Appearance= "X";
+            Appearance = "X";
         }
     }
 }

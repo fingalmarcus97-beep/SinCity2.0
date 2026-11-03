@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Text;
+using System.Xml.Xsl;
 
 namespace SinCity2._0
 {
@@ -14,7 +15,7 @@ namespace SinCity2._0
             int totalPopulation = register.Count;
             Console.Write($"Total population: {totalPopulation}");
             Console.Write($" || Total arrested: {Interaction.arrestedNumber}");
-            Console.Write($" || Total robbed: {Interaction.robbedNumber}");
+            Console.Write($" || Total robbed: {Interaction.robbedNumber} ||");
             
             
 
@@ -45,9 +46,9 @@ namespace SinCity2._0
 
             if (totalMurderer > 0)
             {
-                
-                Console.WriteLine($" || Total murdered: {Interaction.murderedNumber}".PadRight(70, ' '));
-
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($" Total murdered: {Interaction.murderedNumber}".PadRight(70, ' '));
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
@@ -57,11 +58,12 @@ namespace SinCity2._0
             Console.Write($"Citizens: {totalCitizen}");
             Console.Write($" || Thiefs: {totalThief}");
             Console.Write($" || Police: {totalPolice}");
-            Console.Write($" || Prisoners: {prisonPopulation}");
+            Console.Write($" || Prisoners: {prisonPopulation} ||");
             if (totalMurderer > 0)
             {
-                Console.Write($" || Murderers: {totalMurderer} ".PadRight(70, ' '));
-      
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write($" Murderers: {totalMurderer} ".PadRight(70, ' '));
+                Console.ForegroundColor = ConsoleColor.White;
             }
             Console.WriteLine();
         }
@@ -77,7 +79,14 @@ namespace SinCity2._0
             Console.WriteLine("█ NEWSFEED ██████████████████████████████████████████████████");
             foreach (string message in newsFeed.ToList())
             {
-                Console.WriteLine(message);
+                if (message.Contains("MÖRDARE") || message.Contains("mördad"))
+                { 
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine(message);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else { Console.WriteLine(message); }
+                
             }
             Console.WriteLine("█████████████████████████████████████████████████████████████");
         }

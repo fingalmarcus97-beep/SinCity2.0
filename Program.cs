@@ -23,7 +23,7 @@ namespace SinCity2._0
                 Board.PrisonBoard(10, 10, prisonRegister, cityRegister);
                 Board.PoorBoard(50, 10, poorRegister);
                 Interaction.Interactions(cityRegister, prisonRegister, newsFeed);
-                Interaction.AddPopulation(cityRegister, newsFeed);
+                Interaction.AddPopulation(cityRegister, prisonRegister, poorRegister, newsFeed);
                 Status.NewsFeed(newsFeed);
             }
         }

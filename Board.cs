@@ -40,11 +40,15 @@ namespace SinCity2._0
                         }
                         else if (p is Thief)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.Magenta;
                         }
                         else if (p is Police)
                         {
                             Console.ForegroundColor = ConsoleColor.Blue;
+                        }
+                        else if (p is Murderer)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
                         }
                         Console.Write(p.Appearance);
                         Console.ResetColor();
@@ -84,7 +88,7 @@ namespace SinCity2._0
                         Person p = peoples.First();
                         if (p is Thief)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.Magenta;
                         }
                         Console.Write(p.Appearance);
                         Console.ResetColor();
