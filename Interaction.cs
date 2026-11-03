@@ -90,19 +90,26 @@ namespace SinCity2._0
                     case 'n':
                         newsNumber++;
                         newsFeed.Enqueue($" {newsNumber}. NUKE INCOMING!".PadRight(70, ' '));
+
+                        newsNumber++;
+                        newsFeed.Enqueue($" {newsNumber}. IMPACT IN 3...".PadRight(70, ' '));
+
+                        newsNumber++;
+                        newsFeed.Enqueue($" {newsNumber}. IMPACT IN 2...".PadRight(70, ' '));
+
+                        newsNumber++;
+                        newsFeed.Enqueue($" {newsNumber}. IMPACT IN 1...".PadRight(70, ' '));
+
                         cityRegister.Clear();
                         prisonRegister.Clear();
                         poorRegister.Clear();
+
+                        newsNumber++;
+                        newsFeed.Enqueue($" {newsNumber}. STADEN HAR UTPLÅNATS!".PadRight(70, ' '));
+
                         break;
                 }
             }
-        }
-        public static void Nuke(Queue<string> newsFeed)
-        {
-
-
-
-
         }
     }
 }
