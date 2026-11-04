@@ -65,29 +65,29 @@ namespace SinCity2._0
             {
 
                 ConsoleKeyInfo key = Console.ReadKey(true);
-                switch (key.KeyChar)
+                switch (char.ToUpper(key.KeyChar))
                 {
-                    case 'c':
+                    case 'C':
                         newsNumber++;
                         cityRegister.Add(new Citizen(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
                         newsFeed.Enqueue($" {newsNumber}. En ny person flyttar in i staden.".PadRight(70, ' '));
                         break;
-                    case 't':
+                    case 'T':
                         newsNumber++;
                         cityRegister.Add(new Thief(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
                         newsFeed.Enqueue($" {newsNumber}. En tjuv flyttar in i staden.".PadRight(70, ' '));
                         break;
-                    case 'p':
+                    case 'P':
                         newsNumber++;
                         cityRegister.Add(new Police(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
                         newsFeed.Enqueue($" {newsNumber}. En polis flyttar in i staden.".PadRight(70, ' '));
                         break;
-                    case 'm':
+                    case 'M':
                         newsNumber++;
                         cityRegister.Add(new Murderer(Random.Shared.Next(1, 99), Random.Shared.Next(1, 24), Person.SetName()));
                         newsFeed.Enqueue($" {newsNumber}. En MÖRDARE är lös i staden.".PadRight(70, ' '));
                         break;
-                    case 'n':
+                    case 'N':
                         newsNumber++;
                         newsFeed.Enqueue($" {newsNumber}. NUKE INCOMING!".PadRight(70, ' '));
 
@@ -106,8 +106,9 @@ namespace SinCity2._0
 
                         newsNumber++;
                         newsFeed.Enqueue($" {newsNumber}. STADEN HAR UTPLÅNATS!".PadRight(70, ' '));
-
                         break;
+                    case 'Q':
+                        Program.runProgram = false; break;
                 }
             }
         }

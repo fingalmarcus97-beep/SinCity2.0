@@ -67,7 +67,7 @@ namespace SinCity2._0
             Console.WriteLine();
         }
 
-        public static void NewsFeed (Queue<string> newsFeed)
+        public static void NewsFeed (Queue<string> newsFeed, List<Person> cityRegister, List<Person> prisonRegister, List<Person> poorRegister)
         {
             while (newsFeed.Count() > 10)
             {
@@ -84,8 +84,9 @@ namespace SinCity2._0
                     Console.WriteLine(message);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
-                else if (message.Contains("NUKE") || message.Contains("IMPACT"))
+                else if (message.Contains("NUKE") || message.Contains("IMPACT") || message.Contains("UTPLÅNAT"))
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(message);
                     Thread.Sleep(1000);
                     newsFeed.Clear();
@@ -93,9 +94,9 @@ namespace SinCity2._0
                     {
                         newsFeed.Enqueue(" ".PadRight(70, ' '));
                     }
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 else { Console.WriteLine(message); }
-                
             }
             Console.WriteLine("█████████████████████████████████████████████████████████████");
         }
