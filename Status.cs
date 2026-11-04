@@ -17,7 +17,7 @@ namespace SinCity2._0
             Console.Write($"Total population: {totalPopulation}");
             Console.Write($" || Total arrested: {Interaction.arrestedNumber}");
             Console.Write($" || Total robbed: {Interaction.robbedNumber} ||".PadRight(23, ' '));
-            
+
             int totalCitizen = 0;
             int totalThief = 0;
             int totalPolice = 0;
@@ -67,7 +67,7 @@ namespace SinCity2._0
             Console.WriteLine();
         }
 
-        public static void NewsFeed (Queue<string> newsFeed, List<Person> cityRegister, List<Person> prisonRegister, List<Person> poorRegister)
+        public static void NewsFeed(Queue<string> newsFeed)
         {
             while (newsFeed.Count() > 10)
             {
@@ -79,7 +79,7 @@ namespace SinCity2._0
             foreach (string message in newsFeed.ToList())
             {
                 if (message.Contains("MÖRDARE") || message.Contains("mördad"))
-                { 
+                {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(message);
                     Console.ForegroundColor = ConsoleColor.White;

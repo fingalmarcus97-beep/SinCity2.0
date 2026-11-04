@@ -12,7 +12,7 @@ namespace SinCity2._0
             List<Person> prisonRegister = new List<Person>();
             List<Person> poorRegister = new List<Person>();
             Queue<string> newsFeed = new Queue<string>();
-            
+
             Board.Reg(cityRegister);
 
             while (runProgram)
@@ -25,7 +25,7 @@ namespace SinCity2._0
                 Board.PoorBoard(50, 10, poorRegister);
                 Interaction.Interactions(cityRegister, prisonRegister, newsFeed);
                 Interaction.AddPopulation(cityRegister, prisonRegister, poorRegister, newsFeed);
-                Status.NewsFeed(newsFeed, cityRegister, prisonRegister, poorRegister);
+                Status.NewsFeed(newsFeed);
             }
         }
     }
